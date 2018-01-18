@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const graphqlHttp = require("express-graphql");
-const schema = require("./graphql/schema");
+const Schema = require("./graphql/schema");
 class App {
     constructor() {
         this.express = express();
@@ -10,7 +10,8 @@ class App {
     }
     middleware() {
         this.express.use('/graphql', graphqlHttp({
-            schema: schema
+            schema: Schema,
+            graphiql: true
         }));
     }
 }
