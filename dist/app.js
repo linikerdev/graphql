@@ -14,5 +14,6 @@ class App {
             graphiql: process.env.NODE_ENV === 'development'
         }));
     }
+    ;
 }
 exports.default = new App().express;

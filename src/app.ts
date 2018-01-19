@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as graphqlHTTP from "express-graphql";
-import schema from "./graphql/schema";
+import schema from './graphql/schema';
 
 
 class App {
@@ -16,7 +16,8 @@ class App {
         this.express.use('/graphql', graphqlHTTP({
             schema: schema,
             graphiql: process.env.NODE_ENV === 'development'
-    }
+        });
+    });
 }
 
 export default new App().express;
