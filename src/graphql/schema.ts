@@ -1,7 +1,7 @@
-import { makeExecutableSchema } from 'graphql-tools';
 
+import {makeExecutableSchema} from "graphql-tools";
 
-const users: any = [
+const users: any[] = [
     {
         id: 1,
         name: 'liniker',

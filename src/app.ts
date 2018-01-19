@@ -1,6 +1,6 @@
 import * as express from 'express';
-import * as graphqlHttp from 'express-graphql';
-import * as Schema from './graphql/schema';
+import * as graphqlHTTP from "express-graphql";
+import schema from "./graphql/schema";
 
 
 class App {
@@ -13,10 +13,9 @@ class App {
     }
 
     private middleware(): void {
-        this.express.use('/graphql', graphqlHttp({
-            schema: Schema,
-            graphiql: true
-        }))
+        this.express.use('/graphql', graphqlHTTP({
+            schema: schema,
+            graphiql: process.env.NODE_ENV === 'development'
     }
 }
 
