@@ -68,7 +68,7 @@ export default (sequelize: Sequelize.Sequelize, Datatypes: Sequelize.DataTypes):
             }
         });
 
-    User.associate = (models: ModelsInterface): void = { }
+    User.associate = (models: ModelsInterface): void => { }
 
     User.prototype.isPassword = (encodePassword: string, password: string): boolean => {
         return compareSync(password, encodePassword);
