@@ -14,10 +14,11 @@ class App {
             req['context'] = {};
             req['context'].db = models_1.default;
             next();
-        }, graphqlHTTP({
+        }, graphqlHTTP((req) => ({
             schema: schema_1.default,
-            graphiql: process.env.NODE_ENV === 'development'
-        }));
+            graphiql: process.env.NODE_ENV === 'development',
+            context: req['context']
+        })));
     }
     ;
 }
