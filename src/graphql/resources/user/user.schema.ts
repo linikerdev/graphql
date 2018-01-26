@@ -1,6 +1,4 @@
-const usertypes = `
-
-    #
+const userTypes = `
     type User {
         id: ID!
         name: String!
@@ -10,37 +8,37 @@ const usertypes = `
         updatedAt: String!
     }
 
-    input userCreateInput {
+    input UserCreateInput {
         name: String!
         email: String!
         password: String!
     }
 
-    input userUpdateInput {
+    input UserUpdateInput {
         name: String!
         email: String!
         photo: String
     }
 
-    input userUpdatePasswordInput {
+    input UserUpdatePasswordInput {
         password: String!
     }
 `;
 
 const userQueries = `
-    users(first: Int, offset: Int): [user!]
-    user(id: ID!): user
+    users(first: Int, offset: Int): [User!]
+    user(id: ID!): User
 `;
 
 const userMutation = `
-    createUser(input: userCreateInput!): user
-    updateUser(id: ID!, input: userUpdateInput!): user
-    updateUserPassword(id: ID!, input: userUpdatePasswordInput!): Boolean
+    createUser(input: UserCreateInput!): User
+    updateUser(id: ID!, input: UserUpdateInput!): User
+    updateUserPassword(id: ID!, input: UserUpdatePasswordInput!): Boolean
     deleteuser(id: ID!): Boolean
 `;
 
 export {
-    usertypes,
+    userTypes,
     userQueries,
     userMutation
 }

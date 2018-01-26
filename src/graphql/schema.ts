@@ -3,8 +3,9 @@ import { makeExecutableSchema } from "graphql-tools";
 
 import { Query } from './query';
 import { Mutation } from './mutation';
-
-import { usertypes } from "./resources/user/user.schema";
+import { userTypes } from "./resources/user/user.schema";
+import { postTypes } from "./resources/post/post.schema";
+import { commentTypes } from "./resources/comment/comment.schema";
 
 
 const SchemaDefinition = `  
@@ -20,7 +21,8 @@ export default makeExecutableSchema({
         SchemaDefinition,
         Query,
         Mutation,
-        usertypes
-
+        userTypes,
+        postTypes,
+        commentTypes
     ]
 });
