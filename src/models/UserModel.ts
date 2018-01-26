@@ -61,9 +61,15 @@ export default (sequelize: Sequelize.Sequelize, Datatypes: Sequelize.DataTypes):
         {
             tableName: 'users',
             hooks: {
-                beforeCreate: (User: UserInstance, options: Sequelize.CreateOptions): void => {
+                beforeCreate: (user: UserInstance, options: Sequelize.CreateOptions): void => {
                     const salt = genSaltSync();
-                    User.password = hashSync(User.password, salt);
+                    user.password = hashSync(user.password, salt);
+                },
+                beforeUpdate: (user: UserInstance, options: Sequelize.CreateOptions): void => {
+                    if (user.changed('password')) {
+                        const salt = genSaltSync();
+                        user.password = hashSync(user.password, salt);
+                    }
                 }
             }
         });
