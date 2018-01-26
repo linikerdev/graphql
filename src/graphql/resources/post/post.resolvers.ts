@@ -70,10 +70,3 @@ export const postResolvers = {
 
     }
 }
-/*
- type Post 
- createPost(input: PostInput!): Post
-    updatePost(id: ID!, input: PostUpdateInput!): Post
-    deletepost(id: ID!): Boolean
-
-*/
