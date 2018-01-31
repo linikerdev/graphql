@@ -14,11 +14,11 @@ import { userResolvers } from './resources/user/user.resolvers';
 import { postResolvers } from './resources/post/post.resolvers';
 
 
-const resolvers = merge({
+const resolvers = merge(
     commentResolvers,
     postResolvers,
     userResolvers
-});
+);
 
 
 const SchemaDefinition = `  
@@ -37,5 +37,6 @@ export default makeExecutableSchema({
         commentTypes,
         postTypes,
         userTypes
-    ]
+    ],
+    resolvers
 });

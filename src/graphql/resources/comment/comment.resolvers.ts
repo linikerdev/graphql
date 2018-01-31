@@ -1,25 +1,25 @@
 import { handleError } from './../../../utils/utils';
 import { CommentInstance } from './../../../models/CommentModel';
 import { DbConnection } from './../../../interfaces/DbConnectionInterface';
-import { GraphQLDirective } from "graphql/type/directives";
 import { Transaction } from 'sequelize';
+import { GraphQLResolveInfo } from 'graphql';
 
 export const commentResolvers = {
 
     Comment: {
-        user: (comment, args, { db }: { db: DbConnection }, info: GraphQLDirective) => {
+        user: (comment, args, { db }: { db: DbConnection }, info: GraphQLResolveInfo) => {
             return db.User
                 .findById(comment.get('user'))
                 .catch(handleError);
         },
-        posts: (comment, args, { db }: { db: DbConnection }, info: GraphQLDirective) => {
+        post: (comment, args, { db }: { db: DbConnection }, info: GraphQLResolveInfo) => {
             return db.Post
                 .findById(comment.get('post'))
                 .catch(handleError);
         }
     },
     Query: {
-        commentsByPost: (parent, { postId, first = 10, offset = 0 }, { db }: { db: DbConnection }, info: GraphQLDirective) => {
+        commentsByPost: (parent, { postId, first = 10, offset = 0 }, { db }: { db: DbConnection }, info: GraphQLResolveInfo) => {
             postId = parseInt(postId);
             return db.Comment
                 .findAll({
@@ -32,13 +32,13 @@ export const commentResolvers = {
     },
 
     Mutation: {
-        createComment: (parent, { input }, { db }: { db: DbConnection }, info: GraphQLDirective) => {
+        createComment: (parent, { input }, { db }: { db: DbConnection }, info: GraphQLResolveInfo) => {
             return db.sequelize.transaction((t: Transaction) => {
                 return db.Comment
                     .create(input, { transaction: t });
             }).catch(handleError);
         },
-        updateComment: (parent, { id, input }, { db }: { db: DbConnection }, info: GraphQLDirective) => {
+        updateComment: (parent, { id, input }, { db }: { db: DbConnection }, info: GraphQLResolveInfo) => {
             id = parseInt(id);
             return db.sequelize.transaction((t: Transaction) => {
                 return db.Comment
@@ -49,7 +49,7 @@ export const commentResolvers = {
                     });
             }).catch(handleError);
         },
-        deleteComment: (parent, { id }, { db }: { db: DbConnection }, info: GraphQLDirective) => {
+        deleteComment: (parent, { id }, { db }: { db: DbConnection }, info: GraphQLResolveInfo) => {
             id = parseInt(id);
             return db.sequelize.transaction((t: Transaction) => {
                 return db.Comment

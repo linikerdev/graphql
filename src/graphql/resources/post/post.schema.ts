@@ -32,7 +32,7 @@ const postQueries = `
 const postMutation = `
     createPost(input: PostInput!): Post
     updatePost(id: ID!, input: PostUpdateInput!): Post
-    deletepost(id: ID!): Boolean
+    deletePost(id: ID!): Boolean
 `;
 
 export {
