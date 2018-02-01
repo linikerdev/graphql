@@ -26,7 +26,6 @@ export const onError = (server: Server) => {
         }
     }
 }
-
 export const onListening = (server: Server) => {
     return (): void => {
         let addr = server.address();
@@ -34,10 +33,10 @@ export const onListening = (server: Server) => {
         console.log(`Listening at ${bind}...`);
     }
 }
-
-
 export const handleError = (error: Error) => {
     let errorMessage: string = `${error.name} : ${error.message}`;
     console.log(errorMessage);
     return Promise.reject(new Error(errorMessage));
 }
+
+export const JWT_SECRET = process.env.JWT_SECRET;
