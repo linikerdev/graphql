@@ -12,7 +12,7 @@ export const tokenResolvers = {
             }).then((user: UserInstance) => {
                 let errorMessage: string = 'Unauthorazed, wrong email or password';
                 //caso tenha passado user ou password incorreto
-                if (!user || !user.isPassword(user.get('password'), password)) { throw new Error(errorMessage) }
+                if (!user || !user.isPassword(user.get('password'), password)){ throw new Error(errorMessage) }
 
                 const payload = {
                     sub: user.get('id')
