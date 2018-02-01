@@ -12,6 +12,7 @@ import { commentTypes } from "./resources/comment/comment.schema";
 import { commentResolvers } from './resources/comment/comment.resolvers';
 import { userResolvers } from './resources/user/user.resolvers';
 import { postResolvers } from './resources/post/post.resolvers';
+import { tokenTypes } from "./resources/token/token.schema";
 
 
 const resolvers = merge(
@@ -34,6 +35,7 @@ export default makeExecutableSchema({
         SchemaDefinition,
         Query,
         Mutation,
+        tokenTypes,
         commentTypes,
         postTypes,
         userTypes

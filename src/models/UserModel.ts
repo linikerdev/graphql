@@ -39,12 +39,12 @@ export default (sequelize: Sequelize.Sequelize, Datatypes: Sequelize.DataTypes):
             allowNull: false
         },
         email: {
-            type: Datatypes.INTEGER,
+            type: Datatypes.STRING(128),
             allowNull: false,
             unique: true
         },
         password: {
-            type: Datatypes.INTEGER,
+            type: Datatypes.STRING(120),
             allowNull: false,
             validate: {
                 notEmpty: true
