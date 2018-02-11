@@ -2,10 +2,11 @@ import { GraphQLFieldResolver } from 'graphql';
 import { ResolverContext } from './../../interfaces/ResolverContextInterface';
 import { ComposableResolver } from './composable.resolver';
 import { resolve } from 'path';
+import { verifyTokenResolver } from './verify-token.resolver';
 
 export const authResolver: ComposableResolver<any, ResolverContext> =
     (resolver: GraphQLFieldResolver<any, ResolverContext>): GraphQLFieldResolver<any, ResolverContext> => {
-        
+
         return (parent, args, context: ResolverContext, info) => {
 
             if (context.authUser || context.authorization) {
@@ -14,3 +15,8 @@ export const authResolver: ComposableResolver<any, ResolverContext> =
             throw new Error('Unauthorizad! Token not provided !');
         }
     }
+
+export const authResolvers = [
+    authResolver,
+    verifyTokenResolver
+]
