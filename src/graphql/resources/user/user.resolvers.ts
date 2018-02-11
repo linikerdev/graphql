@@ -6,7 +6,6 @@ import { GraphQLResolveInfo } from 'graphql';
 import { handleError } from '../../../utils/utils';
 import { Transaction } from 'sequelize';
 import { compose } from '../../composable/composable.resolver';
-import { authResolver } from '../../composable/auth.resolver';
 
 import { verifyTokenResolver } from './../../composable/verify-token.resolver';
 import { AuthUser } from '../../../interfaces/AuthUserInterface';
